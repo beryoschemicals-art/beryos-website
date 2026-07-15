@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://beryoschemicals-art.github.io/beryos-website/sitemap.xml
