@@ -2,6 +2,21 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<script>
+/* TEMP DIAGNOSTIC (remove after iPhone debugging) — collects any JS error */
+window.__errs=[];window.__build='18JUL-C';
+window.addEventListener('error',function(e){
+  window.__errs.push((e.message||'error')+' [line '+(e.lineno||'?')+']');
+  if(window.__showDiag)window.__showDiag();
+});
+window.addEventListener('unhandledrejection',function(e){
+  var r=e&&e.reason;window.__errs.push('Promise: '+((r&&r.message)||r||'rejected'));
+  if(window.__showDiag)window.__showDiag();
+});
+
+
+</script>
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Beryos Chemicals LLP — Inorganic Salt Manufacturer in India | Nitrates &amp; Sulphates</title>
 <meta name="description" content="Beryos Chemicals LLP is an industrial inorganic salt manufacturer in Gujarat, India — producing high-purity Potassium Nitrate, Sodium Nitrate, Sodium Nitrite, Zinc Sulphate, Copper Sulphate and Magnesium Sulphate for agriculture, chemical manufacturing and export. Bulk supply, consistent quality, custom packaging.">
@@ -2578,6 +2593,8 @@ button,a,select,input,textarea,.pp-card,.product-card,.ind-card,.founder-card{
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Product","name":"Caustic Potash","description":"Potassium hydroxide for liquid soaps, fertilizers, batteries and chemical synthesis.","brand":{"@type":"Brand","name":"Beryos Chemicals LLP"},"manufacturer":{"@type":"Organization","name":"Beryos Chemicals LLP","address":{"@type":"PostalAddress","addressLocality":"Rajkot","addressRegion":"Gujarat","addressCountry":"IN"}},"additionalProperty":[{"@type":"PropertyValue","name":"Chemical Formula","value":"KOH"},{"@type":"PropertyValue","name":"CAS Number","value":"1310-58-3"},{"@type":"PropertyValue","name":"Packaging","value":"25kg / 50kg bags, custom packaging available"}]}</script>
 </head>
 <body>
+
+
 <a href="#main-content" class="skip-link">Skip to main content</a>
 
 <!-- NAVBAR -->
@@ -4901,6 +4918,8 @@ mobileClose.addEventListener('click', closeMobileMenu);
 mobileMenu.addEventListener('click', e=>{ if(e.target===mobileMenu) closeMobileMenu(); });
 
 // Nav managed by router
+
+window.__mainOK = true; /* set ONLY if the main script ran to completion */
 </script>
 
 <script>
@@ -5215,7 +5234,7 @@ mobileMenu.addEventListener('click', e=>{ if(e.target===mobileMenu) closeMobileM
 
 <script>
 /* ═══════════════════════════════════════════════════════════════
-   FAILSAFE — deliberately a SEPARATE <script> block.
+   FAILSAFE — deliberately a SEPARATE script block.
    The site hides 138 elements at opacity:0 and relies on JS to
    reveal them. If the main script ever throws (old iOS, blocked
    CDN, Lockdown Mode, low-memory kill), those elements would stay
@@ -5242,6 +5261,42 @@ mobileMenu.addEventListener('click', e=>{ if(e.target===mobileMenu) closeMobileM
     window.addEventListener('load', function(){ setTimeout(reveal, 2000); }, false);
   }
   setTimeout(reveal, 6000); // backstop if 'load' never fires
+})();
+</script>
+<script>
+/* TEMP DIAGNOSTIC renderer (remove after iPhone debugging) */
+(function(){
+  function make(bg){
+    var d=document.createElement('div');
+    d.style.cssText='position:fixed;left:8px;bottom:8px;z-index:2147483647;'+
+      'max-width:88vw;padding:10px 14px;border-radius:10px;font:12px/1.5 -apple-system,'+
+      'system-ui,sans-serif;color:#fff;background:'+bg+';box-shadow:0 4px 18px rgba(0,0,0,.35);'+
+      'word-break:break-word;-webkit-user-select:text;user-select:text;';
+    document.body.appendChild(d);return d;
+  }
+  window.__showDiag=function(){
+    try{
+      var old=document.getElementById('__diag');if(old)old.parentNode.removeChild(old);
+      var errs=window.__errs||[];var d;
+      if(errs.length){
+        d=make('#B3261E');
+        d.innerHTML='<b>JS ERROR — screenshot this:</b><br>'+
+          errs.slice(0,3).map(function(x){return String(x).replace(/</g,'&lt;');}).join('<br>');
+      }else if(!window.__mainOK){
+        d=make('#B26A00');
+        d.textContent='BUILD '+window.__build+' — main script did NOT finish (no error caught)';
+      }else{
+        d=make('#1D2395');
+        d.textContent='BUILD '+window.__build+' ✓ JS OK — tap this badge';
+        d.addEventListener('click',function(){d.textContent='TAP OK ✓ — touches are registering';d.style.background='#0B6B3A';});
+        setTimeout(function(){if(d.textContent.indexOf('TAP OK')<0){d.style.transition='opacity 1s';d.style.opacity='0';
+          setTimeout(function(){if(d.parentNode)d.parentNode.removeChild(d);},1100);}},12000);
+      }
+      d.id='__diag';
+    }catch(e){}
+  };
+  if(document.readyState==='complete')window.__showDiag();
+  else window.addEventListener('load',function(){setTimeout(window.__showDiag,600);});
 })();
 </script>
 </body>
